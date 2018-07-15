@@ -21,10 +21,9 @@ end
 
 Write a function that checks if list is empty. It should return “true” if it is, and “false” otherwise
 
-f2=fn(a)->
-if length(a)==0 do "true"
-else "flase"
-end
+f2=fn
+[]->"true"
+_->"false"
 end
 
 
