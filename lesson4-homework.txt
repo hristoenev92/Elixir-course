@@ -1,0 +1,55 @@
+Write a function sentence, that takes either “.”, “!”, or “?”. It should return a new function, 
+that takes a second string and uses the suffix you already passed, and appends it to the second string.
+
+sentence = fn x ->
+ if x == "." || x == "!" || x == "?" do
+    fn y -> y <> x end
+ else "You should've provided either '.', '!' or '?'" end
+end
+
+Given a list `[“Alice Addison”, “Bob Benetton”]`, you should (using `Enum.map`) 
+return a list `[[“Alice”, “Addison”], [“Bob”, “Benetton”]]`
+
+Enum.map(["Alice Addison", "Bob Benetton"], fn x-> String.split(x) end)
+
+Given a list `[%{name: “Alice Addison”, age: 14}, %{name: “Bob Benetton”, age: 21}, %{name: “Eve Elliot”, age: 18}]`, 
+return the following list: `[“Alice Addison: 14 years old”, “Bob Benetton: 21 years old”, “Eve Elliot: 18 years old”]`
+
+Enum.map([%{name: "Alice Addison", age: 14}, 
+%{name: "Bob Benetton", age: 21}, 
+%{name: "Eve Elliot", age: 18}], 
+fn (%{age: x, name: y}) -> 
+["#{y}: #{x} years old"] end)
+
+Given the list from the previous task, made an additional case for when the age is “1”, then it should output “<name>: 1 year old”
+
+Enum.map([%{name: "Alice Addison", age: 14}, 
+%{name: "Bob Benetton", age: 1}, 
+%{name: "Eve Elliot", age: 18}], 
+fn (%{age: x, name: y}) -> 
+if x==1 do ["#{y}: 1 year old"]
+else ["#{y}: #{x} years old"] end 
+end)
+
+Given the following list: [“An example sentence”, “Another sentence”, “Third sentence”], remove every sentence that has at least one “a”
+
+Enum.filter(["An example sentence", "Another sentence", "Third sentence"], 
+fn list -> !String.contains? list, ("A"||"a") 
+end)
+
+Given the following matrix: [[1, 2, 3], [4, 5, 6], [7, 8, 9]] Double every element of it, preserving 
+the structure. Make so that it doesn’t matter what size the dimensions are.
+
+Enum.map([[1, 2, 3], [7, 8, 9],  [10, 20, 30]], //changed the matrix got [[2, 4, 6], '\b\n\f', [14, 16, 18]]
+fn x -> Enum.map(x, fn y -> y*2 
+end) 
+end)
+
+Given the matrix from the previous exercise, return only the even numbers, preserving the structure.
+
+require Integer
+Enum.map([[1, 2, 3], [4, 5, 6], [7, 8, 9]], //again returns \b for 8
+fn x -> Enum.filter(x, fn y ->
+Integer.is_even(y) 
+end) 
+end)
