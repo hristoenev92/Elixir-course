@@ -56,4 +56,15 @@ defmodule Homework7 do
 	end
 		#By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 	
+	def fibbonaci() do
+		fibbonaci(1, 2, 3, 2)
+	end
+	def fibbonaci(_, second, third, sum) do
+		if third < 4000000 do
+			fibbonaci(second, third, third+second, if Integer.is_even(second) do sum+second else sum end)
+		else
+		sum
+		end
+	end
+
 end

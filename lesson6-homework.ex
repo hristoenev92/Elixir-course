@@ -20,9 +20,9 @@ defmodule Homework6 do
 		#Write a function, that tests if a list is empty, and returns `true`, `false`, or “This is not a list!”
 	
 	def empty_list(list) when is_list(list) do
-	 if list==[] do true else false end
+	 if list==[] do true else false end # da stane s patternmatch
 	end
-	def empty_list(list) when not is_list(list) do "This is not a list!"
+	def empty_list(list) when not is_list(list) do "This is not a list!" # nqma nujda ot when not is_list
 	end
 
 		#Write a recursive function, that calculates the sum of all even numbers in a list, using guards
@@ -81,6 +81,6 @@ defmodule Refrigerator do
 	
 		#It should have a function `remove`, that takes a refrigerator, an item and count, and returns a new refrigerator, with the count removed from the key in the map. If the count is more than the number of items in the fridge, it should leave the item to 0
 	def remove(refrigerator, item, count) do
-		Map.update!(refrigerator, item, &(if (&1-count)<0 do 0 else (&1-count) end))
+		Map.update!(refrigerator, item, &(if (&1-count)<0 do 0 else (&1-count) end))# da se premahne item s count 0
 	end
 end
