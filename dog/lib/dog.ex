@@ -11,6 +11,6 @@ defmodule Dog do
     IO.puts "Not found :("
   {:error, %HTTPoison.Error{reason: reason}} ->
     IO.inspect reason
-end
+    end
   end
 end
