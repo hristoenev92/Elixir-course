@@ -65,7 +65,7 @@ defmodule Ping_Pong do
         {:pong, ping} ->
           IO.puts("Pong")
           :timer.sleep(2000)
-          send(ping, {:ping, pong()})
+          send(ping, {:ping, ping()})
       end
     end
   end
