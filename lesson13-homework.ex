@@ -7,20 +7,20 @@ defmodule Refrigirator do
   def refrigirator(map) do
     receive do
       {:add, product, quantity} ->
-        if Map.has_key?(map, product) do
-          map = Map.update!(map, product, &(&1 + quantity))
+        map = if Map.has_key?(map, product) do
+           Map.update!(map, product, &(&1 + quantity))
         else
-          map =  Map.put(map, product, quantity)
+           Map.put(map, product, quantity)
         end
         refrigirator(map)
       {:status} ->
         IO.inspect(map)
         refrigirator(map)
       {:take, product, quantity} ->
-        if quantity>=Map.get(map, product) do
-          map = Map.delete(map, product)
+        map = if quantity>=Map.get(map, product) do
+          Map.delete(map, product)
         else
-          map = Map.update!(map, product, &(&1-quantity))
+          Map.update!(map, product, &(&1-quantity))
         end
         refrigirator(map)
     end
