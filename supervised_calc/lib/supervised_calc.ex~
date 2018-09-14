@@ -1,0 +1,33 @@
+defmodule SupervisedCalc do
+  use GenServer
+  @moduledoc """
+  Documentation for SupervisedCalc.
+  """
+  alias __MODULE__
+
+  def start_link(_args \\ []) do
+     GenServer.start_link(__MODULE__, 0, name: __MODULE__)
+  end
+  
+  def init(0) do
+    {:ok, 0}
+  end
+
+  def add_number(number) do
+    GenServer.call(__MODULE__, {:add, number})
+  end
+
+  def status() do
+    GenServer.call(__MODULE__, {:status})
+  end
+
+  def handle_call({:add, number},_from, state) do
+    new_number = number + state
+    {:reply, new_number, new_number}
+  end
+
+  def handle_call({:status}, _from, state) do
+    {:reply, state, state}
+  end
+  
+end
