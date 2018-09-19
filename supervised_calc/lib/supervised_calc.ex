@@ -6,8 +6,8 @@ defmodule SupervisedCalc do
   alias __MODULE__
   alias StateHolder
   
-  def start_link(init_state) do
-     GenServer.start_link(__MODULE__, init_state, name: __MODULE__)
+  def start_link(_init_state) do
+     GenServer.start_link(__MODULE__, StateHolder.status(), name: __MODULE__)
   end
   
   def init(init_state) do

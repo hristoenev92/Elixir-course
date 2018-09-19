@@ -12,7 +12,6 @@ defmodule SupervisedCalc.Application do
     children = [
       {StateHolder, 0},
       {SupervisedCalc, 0}
-      ##{SupervisedCalc, StateHolder.state()} процеса не е стартиран
       # Starts a worker by calling: SupervisedCalc.Worker.start_link(arg)
       # {SupervisedCalc.Worker, arg},
     ]
